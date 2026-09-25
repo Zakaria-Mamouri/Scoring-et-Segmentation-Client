@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+*.pyo
+.git
+.gitignore
+.env
+venv/
+.venv/
+*.ipynb
+.pytest_cache/
+.vscode/
+.idea/
+Dockerfile
+docker-compose.yml
+*.bat
