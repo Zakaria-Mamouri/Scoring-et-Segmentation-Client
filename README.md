@@ -1,6 +1,6 @@
-# Eurafric - API de scoring credit (FastAPI)
+# Eurafric - API de scoring credit 
 
-Variante FastAPI du projet Streamlit Eurafric. L'API permet a l'entreprise de
+L'API permet a l'entreprise de
 scorer de nouveaux clients en **saisie manuelle** (JSON) ou **par fichier CSV**,
 et d'obtenir en sortie : score credit, probabilites, risque, segment,
 elasticite et recommandation business.
