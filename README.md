@@ -11,31 +11,33 @@ Pipeline complet reutilise : nettoyage → feature engineering → segmentation
 > **Archive autonome** : ce projet est fourni avec son dossier `models/` inclus.
 > Il fonctionne tel quel sur n'importe quelle machine (aucun chemin absolu,
 > aucune dependance vers le projet principal). Il suffit d'executer
-> `lancer_serveur.bat`.
+> `docker compose up`.
 
 ## Pre-requis
 
-- Python 3.10+ (installe et ajoute au PATH)
+- Docker et Docker Compose installes
 - Le dossier `models/` est fourni avec le projet
-
-## Installation
-
-```bash
-pip install -r requirements.txt
-```
 
 ## Lancement (une seule commande)
 
-Sur Windows, double-cliquer sur **`lancer_serveur.bat`** :
+```bash
+docker compose up
+```
 
-- cree un environnement virtuel `venv/` au premier lancement ;
-- installe automatiquement les dependances ;
+- construit l'image et installe automatiquement les dependances au premier
+  lancement ;
 - demarre le serveur sur `http://localhost:8000`.
 
-Ou manuellement :
+Pour lancer en arriere-plan :
 
 ```bash
-python -m uvicorn app.main:app --host 0.0.0.0 --port 8000
+docker compose up -d
+```
+
+Pour arreter :
+
+```bash
+docker compose down
 ```
 
 L'API est alors accessible sur `http://localhost:8000`.
@@ -140,7 +142,7 @@ eurafric_fastapi/
 │   └── forms.py         Formulaires web HTML
 ├── models/              Artefacts de modeles (fournis)
 ├── requirements.txt
-├── lancer_serveur.bat   Lancement en un clic (Windows)
+├── docker-compose.yml   Lancement en un clic
 └── README.md
 ```
 
@@ -149,7 +151,7 @@ eurafric_fastapi/
 - Les modeles sont charges une seule fois (cache) au demarrage.
 - Le projet est **autonome** : les modeles sont inclus dans `models/`, le code
   n'utilise aucun chemin absolu ni aucun fichier du projet principal. Deployer
-  = extraire l'archive et lancer `lancer_serveur.bat`.
+  = extraire l'archive et lancer `docker compose up`.
 - Le pipeline est identique a celui des notebooks et de l'application Streamlit.
 - La categorie de risque utilise les seuils fixes appris sur l'entrainement
   (artefact `risque_categorie_seuils.joblib`), ce qui permet de scorer
